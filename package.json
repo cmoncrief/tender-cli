@@ -4,7 +4,6 @@
   "version": "0.1.0",
   "author": "Charles Moncrief <cmoncrief@gmail.com>",
   "keywords": ["tender", "api", "cli"],
-
   "dependencies": {
     "commander": "~1.1.1",
     "cli-table": "~0.2.0",

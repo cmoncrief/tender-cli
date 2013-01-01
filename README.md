@@ -153,33 +153,5 @@ To run the test suite, invoke the following commands in the repository:
 
     $ npm install
     $ npm test
-    
-Please note that the majority of the tests rely on a live Tender API account in order to execute. 
-To set up the test data for your account, create a `.tenderrc` configuration file as shown above and add a
-`testData` object with the following keys:
-
-* `queue` - The name of a queue in your account.
-* `category` - The name of a category in your account.
-* `user` - The full name of a user belonging to your Tender account.
-* `userId` - The id of a user belonging to your Tender account.
-* `discussionId` - The id of any discussion belonging to your account
-* `pattern` - A regexp pattern that will match the title of at least one Open discussion on your account.
-
-#### Example .tenderrc for testing:
-
-    {
-      "subdomain": "your-sub-domain",
-      "token": "your-api-token",
-      "testData" : {
-        "queue" : "Test queue",
-        "category" : "Test category",
-        "user" : "Charles Moncrief",
-        "userId" : "12345",
-        "discussionId" : "12345",
-        "pattern" : "xyz"
-      }
-    }
-
-__All tests perform read operations only. No data will be modified.__
 
 
