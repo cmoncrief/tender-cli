@@ -1,0 +1,34 @@
+{
+  "name": "tender-cli",
+  "description": "Command line interface for Tender",
+  "version": "0.1.0",
+  "author": "Charles Moncrief <cmoncrief@gmail.com>",
+  "keywords": ["tender", "api", "cli"],
+
+  "dependencies": {
+    "commander": "~1.1.1",
+    "cli-table": "~0.2.0",
+    "moment": "~1.7.2",
+    "csv": "~0.2.4",
+    "async": "~0.1.22",
+    "tender": "~0.1.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "coffee-script": "*"
+  },
+  "main": "lib/tender-cli.js",
+  "bin": {
+    "tender": "./bin/tender"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cmoncrief/tender-cli.git" 
+  },
+  "scripts": {
+    "prepublish" : "cake build",
+    "test": "cake test"
+  },
+  "engines": { "node" : "*"},
+  "license": "MIT"
+}
