@@ -28,7 +28,6 @@ class TenderCLI
       password: @program.pass || config.password
       subdomain: @program.subdomain || config.subdomain
       token: @program.api || config.token
-      testData: config.testData
 
     @client = tender.createClient @clientOpts
 

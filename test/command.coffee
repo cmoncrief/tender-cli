@@ -7,9 +7,6 @@ program = {token: '12345'}
 
 describe 'Command', ->
 
-  before ->
-    
-
   it 'should create a CLI object sanely', ->
     assert tenderCLI(program, {})
 
