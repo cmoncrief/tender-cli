@@ -1,7 +1,7 @@
 path     = require 'path'
 moment   = require 'moment'
 csv      = require 'csv'
-Reporter = require '../reporter'
+Reporter = require '../../reporter'
 
 # Outputs a CSV file with the same fields found in the default table
 # reporter.

@@ -17,6 +17,7 @@ If you don't already have Node.js installed, [download and install it first](htt
     Commands:
 
       list [options]         List discussions with optional filters
+      show [options] [id]    Show single discussion with comments
 
     Options:
 
@@ -88,7 +89,37 @@ Several filters and reporters are available for selecting discussions. Below are
 
     $ tender list -c problems -s assigned
 
-## Discussion reporters
+## Discussion details
+
+Use the `show` command to get additional details on a specific discussion, including the comments.
+
+    Usage: show [options] [id]
+
+    Options:
+
+      -h, --help             output usage information
+      -r, --reporter <name>  Specify the reporter to use
+      --reporters            List available reporters
+
+#### Example
+
+    $ tender show 1234567
+
+    Discussion #1234567
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Title    : Login issue
+    Author   : John Smith (john@smith.com)
+    Created  : 11/15/2012 15:11 pm
+    URL      : https://test.tenderapp.com/discussions/1234567
+    State    : open
+    Comments : 1
+    Details  : [acknowledged] [responded] [public] [via web] 
+
+    Description:
+
+    I can't login to my account! Help!
+
+## Discussion list reporters
 
 ### Table
 
@@ -146,6 +177,45 @@ with the `--output` command line options.
 ### CSVFull
 
 Same as above, but will output all available columns.
+
+## Discussion detail reporters
+
+### Basic
+
+This reporter will output the basic headers as well as the first comment on the discussion.
+
+### Thread
+
+This is identical to the basic reporter but will show all comments on the
+discussion.
+
+$ tender show 1234567
+
+    Discussion #1234567
+    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+    Title    : Login issue
+    Author   : John Smith (john@smith.com)
+    Created  : 11/15/2012 15:11 pm
+    URL      : https://test.tenderapp.com/discussions/1234567
+    State    : open
+    Comments : 1
+    Details  : [acknowledged] [responded] [public] [via web] 
+
+    Description:
+
+    I can't login to my account! Help!
+
+    ---------------------------------------------------------------------
+    Date: 11/15/2012 15:15 pm                                  [internal]
+    From: Support One (support@company.com) 
+
+    Can someone look at this please?
+
+    ---------------------------------------------------------------------
+    Date: 11/15/2012 15:19 pm                                  
+    From: Support Two (supportone@company.com) 
+
+    Hi John, do you actually have an account here?
 
 ## Running the tests
 

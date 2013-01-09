@@ -1,10 +1,10 @@
 assert    = require 'assert'
 fs        = require 'fs'
-reporters = require '../lib/reporters'
+reporters = require '../lib/reporters/list'
 util      = require 'util'
-output    = require './test_output.json'
+output    = require './test_output_list.json'
 
-describe 'Reporters', ->
+describe 'List reporters', ->
 
   it 'should have a basic reporter', ->
     assert reporters.basic
@@ -31,7 +31,7 @@ describe 'Reporters', ->
       assert err
       done()
 
-describe 'Basic reporter', ->
+describe 'Basic reporter (list)', ->
 
   it 'should print data', (done) ->
     reporters.basic {data: output, silent: true}, (err, results) ->
@@ -39,7 +39,7 @@ describe 'Basic reporter', ->
       assert.equal results, "\n(1) discussions: \n\n#123: Test 123\n"
       done()
 
-describe 'List reporter', ->
+describe 'List reporter (list)', ->
 
   it 'should print data', (done) ->
     reporters.list {data: output, silent: true}, (err, results) ->
@@ -49,7 +49,7 @@ describe 'List reporter', ->
       assert.notEqual results.indexOf("Discussion #123"), -1
       done()
 
-describe 'Table reporter', ->
+describe 'Table reporter (list)', ->
 
   it 'should print data', (done) ->
     reporters.table {data: output, silent: true}, (err, results) ->
@@ -57,7 +57,7 @@ describe 'Table reporter', ->
       assert.notEqual results.indexOf("Id"), -1
       done()
 
-describe 'CSV reporter', ->
+describe 'CSV reporter (list)', ->
 
   it 'should print csv data to file', (done) ->
     reporters.csv {data: output, cmdOptions : {output: './test/test.csv'}, silent: true}, (err, results) ->
@@ -67,7 +67,7 @@ describe 'CSV reporter', ->
       fs.unlinkSync './test/test.csv'
       done()
 
-describe 'Full CSV reporter', ->
+describe 'Full CSV reporter (list)', ->
 
   it 'should print csv data to file', (done) ->
     reporters.csvfull {data: output, cmdOptions : {output: './test/test_full.csv'}, silent: true}, (err, results) ->
@@ -77,7 +77,7 @@ describe 'Full CSV reporter', ->
       fs.unlinkSync './test/test_full.csv'
       done()
 
-describe 'JSON reporter', ->
+describe 'JSON reporter (list)', ->
 
   it 'should print json data to file', (done) ->
     reporters.json {data: output, cmdOptions : {output: './test/test.json'}, silent: true}, (err, results) ->

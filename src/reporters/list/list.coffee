@@ -1,5 +1,5 @@
 moment   = require 'moment'
-Reporter = require '../reporter'
+Reporter = require '../../reporter'
 
 # Outputs a basic vertical list of discussions in plain text, with 
 # key fields.

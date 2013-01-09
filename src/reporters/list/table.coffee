@@ -1,6 +1,6 @@
 moment   = require 'moment'
 Table    = require('cli-table')
-Reporter = require '../reporter'
+Reporter = require '../../reporter'
 
 # Outputs a table of discussions with key fields only. 
 

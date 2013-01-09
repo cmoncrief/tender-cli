@@ -36,7 +36,7 @@ class TenderCLI
   list: ->
 
     if @options.reporters
-      return @listReporters()
+      return @listReporters "list"
 
     options = {}
     options.state = @options.state if @options.state
@@ -47,20 +47,38 @@ class TenderCLI
 
     @client.getDiscussions options, (err, results) =>
       if err then return console.log(err)
-      @report results
+      @report results, "list"
+
+  # Show detailed view of a single discussion. Results are
+  # output by a reporter class.
+  show: (id) ->
+
+    if @options.reporters
+      return @listReporters "show"
+
+    @client.showDiscussion {id : id}, (err, result) =>
+      if err then return console.log(err)
+      @report result, "show"
 
   # Output results via the chosen or defaulted reporter.
-  report: (data) ->
+  report: (data, type) ->
 
-    reporter = reporters[@options.reporter] || reporters.table
+    cmdReporters = reporters[type]
+
+    reporter = cmdReporters[@options.reporter] || cmdReporters.default
     reporter data: data, cmdOptions: @options
 
   # Outputs a basic list of all available reporters that can be
   # used with the list command.
-  listReporters: ->
+  listReporters: (type) ->
+
+    cmdReporters = reporters[type]
 
     console.log ""
-    console.log "  #{key} - #{reporters[key].description}" for key of reporters
+
+    for key of cmdReporters when key isnt 'default'
+      console.log "  #{key} - #{cmdReporters[key].description}"
+    
     console.log ""
 
 tenderCLI = (program, options) ->

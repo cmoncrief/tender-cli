@@ -22,10 +22,19 @@ module.exports.run = () ->
     .option('-t, --title <pattern>', 'filter by title pattern')
     .option('-m, --max <number>', 'max records to retrieve (defaults to 1000)')
     .option('-r, --reporter <name>', 'Specify the reporter to use')
-    .option('-o, --output <name>', 'specify file name for csv reporters ')
+    .option('-o, --output <name>', 'specify file name for file reporters ')
     .option('--reporters', 'List available reporters')
 
     .action (args) ->
       tenderCLI(program, args).list()
+
+  program
+    .command('show [id]')
+    .description('Show single discussion with comments')
+    .option('-r, --reporter <name>', 'Specify the reporter to use')
+    .option('--reporters', 'List available reporters')
+
+    .action (id, args) ->
+      tenderCLI(program, args).show(id)
 
   program.parse process.argv

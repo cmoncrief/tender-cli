@@ -13,6 +13,9 @@ describe 'Command', ->
   it 'should have a list function', ->
     assert tenderCLI(program, {}).list
 
+  it 'should have a show function', ->
+    assert tenderCLI(program, {}).show
+
   it 'should load configuration data from a file', ->
     if fs.existsSync path.join process.env.HOME, '.tenderrc'
       cli = tenderCLI(program, {})

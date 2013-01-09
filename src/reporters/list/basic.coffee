@@ -1,4 +1,4 @@
-Reporter = require '../reporter'
+Reporter = require '../../reporter'
 
 # Simple reporter that outputs a plain list of titles and Ids.
 

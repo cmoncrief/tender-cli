@@ -1,5 +1,5 @@
 fs       = require 'fs'
-Reporter = require '../reporter'
+Reporter = require '../../reporter'
 
 # Outputs a JSON file with all fields returned by the Tender API.
 
