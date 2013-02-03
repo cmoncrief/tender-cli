@@ -1,7 +1,7 @@
 {
   "name": "tender-cli",
   "description": "Command line interface for Tender",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "Charles Moncrief <cmoncrief@gmail.com>",
   "keywords": [
     "tender",
@@ -14,7 +14,7 @@
     "moment": "~1.7.2",
     "csv": "~0.2.4",
     "async": "~0.1.22",
-    "tender": "~0.1.2"
+    "tender": "0.3.0"
   },
   "devDependencies": {
     "mocha": "*",

@@ -60,6 +60,21 @@ class TenderCLI
       if err then return console.log(err)
       @report result, "show"
 
+  # Create a new discussion. Prints a basic success message.
+  create: ->
+
+    options =
+      authorEmail: @options.email
+      authorName: @options.name
+      public: if @options.private then false else true
+      category: @options.category
+      title: @options.title
+      body: @options.body
+
+    @client.createDiscussion options, (err, result) =>
+      if err then return console.log(err)
+      console.log "Discussion ##{result.id} created in #{@options.category}."
+
   # Output results via the chosen or defaulted reporter.
   report: (data, type) ->
 

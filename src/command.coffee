@@ -7,7 +7,7 @@ tenderCLI = require './tender-cli'
 module.exports.run = () ->
 
   program
-    .version('0.1.0')
+    .version('0.2.0')
     .option('-u, --username <name>', 'set Tender username')
     .option('-p, --pass <password>', 'set Tender password')
     .option('-a, --api <token>', 'set Tender API token')
@@ -36,5 +36,18 @@ module.exports.run = () ->
 
     .action (id, args) ->
       tenderCLI(program, args).show(id)
+
+  program
+    .command('create')
+    .description('Create a new discussion')
+    .option('-t, --title <name>', 'title for the new discussion [required]')
+    .option('-c, --category <name>', 'category to post under [required]')
+    .option('-b, --body <text>', 'the body of the new discussion [required]')
+    .option('--private', 'set discussion to private')
+    .option('-n, --name <name>', 'Name to create discussion under')
+    .option('-e, --email <email>', 'Email to create discussion under')
+
+    .action (args) ->
+      tenderCLI(program, args).create()
 
   program.parse process.argv

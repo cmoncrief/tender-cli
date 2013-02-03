@@ -2,6 +2,14 @@
 
 A command line tool for interacting with ENTP's [Tender API](https://help.tenderapp.com/kb/api).
 
+### Features
+
+* List and filter discussions from the command line 
+* Output discussion lists in a variety of formats including JSON and CSV
+* Show discussion details and full comment threads
+* Create new discussions from the command line
+* Authentication data can be stored in a local configuration file for ease of use
+
 ## Installation
 
 Install with npm:
@@ -118,6 +126,24 @@ Use the `show` command to get additional details on a specific discussion, inclu
     Description:
 
     I can't login to my account! Help!
+
+## Creating discussions
+
+    Usage: create [options]
+
+    Options:
+
+      -h, --help             output usage information
+      -t, --title <name>     title for the new discussion [required]
+      -c, --category <name>  category to post under [required]
+      -b, --body <text>      the body of the new discussion [required]
+      --private              set discussion to private
+      -n, --name <name>      Name to create discussion under
+      -e, --email <email>    Email to create discussion under
+
+#### Example
+
+    $ tender create -c 'Problems' -t 'Big issue' -b 'The sky is falling!'
 
 ## Discussion list reporters
 
