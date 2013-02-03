@@ -48,6 +48,16 @@ module.exports.run = () ->
       tenderCLI(program, args).create()
 
   program
+    .command('reply [id]')
+    .description('Reply to an existing discussion')
+    .option('-b, --body <text>', 'the body of the reply [required]')
+    .option('--internal', 'set reply to internal')
+    .option('-n, --name <name>', 'Name to reply from')
+    .option('-e, --email <email>', 'Email to reply from')
+    .action (id, args) ->
+      tenderCLI(program, args).reply(id)
+
+  program
     .command('ack [id]')
     .description('Acknowledge a discussion')
     .action (id, args) ->

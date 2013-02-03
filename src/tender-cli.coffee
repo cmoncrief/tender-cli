@@ -75,6 +75,20 @@ class TenderCLI
       if err then return console.log(err)
       console.log "Discussion ##{result.id} created in #{@options.category}."
 
+  # Replies to an existing discussion and prints a basic success message.
+  reply: (id) ->
+
+    options =
+      id: id
+      authorEmail: @options.email
+      authorName: @options.name
+      internal: @options.internal
+      body: @options.body
+
+    @client.replyDiscussion options, (err, result) ->
+      if err then return console.log(err)
+      console.log "Discussion ##{id} replied to."
+
   # Resolves the discussion and prints a basic success message.
   resolve: (id) ->
 

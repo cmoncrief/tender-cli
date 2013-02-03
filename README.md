@@ -7,7 +7,7 @@ A command line tool for interacting with ENTP's [Tender API](https://help.tender
 * List and filter discussions from the command line 
 * Output discussion lists in a variety of formats, including JSON and CSV
 * Show discussion details and comments
-* Create new discussions
+* Create and reply to discussions
 * Resolve, acknowledge, queue and more actions are all supported
 * Credentials can be stored in a local configuration file for ease of use
 
@@ -28,6 +28,7 @@ If you don't already have Node.js installed, [download and install it first](htt
       list [options]            List discussions with optional filters
       show [options] [id]       Show single discussion with comments
       create [options]          Create a new discussion
+      reply [options] [id]      Reply to an existing discussion
       ack [id]                  Acknowledge a discussion
       resolve [id]              Close a discussion
       reopen [id]               Reopen a discussion
@@ -155,6 +156,23 @@ Use the `show` command to get additional details on a specific discussion, inclu
 #### Example
 
     $ tender create -c 'Problems' -t 'Big issue' -b 'The sky is falling!'
+
+## Replying to discussions
+
+    Usage: reply [options] [id]
+
+      Options:
+
+        -h, --help           output usage information
+        -b, --body <text>    the body of the reply [required]
+        --internal           set reply to internal
+        -n, --name <name>    Name to reply from
+        -e, --email <email>  Email to reply from
+
+#### Example
+
+    $ tender reply 10672812 -b 'This is a public reply'
+    $ tender reply 10672812 -b 'This is an internal only reply' --internal
 
 ## Discussion actions
 

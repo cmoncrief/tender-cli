@@ -19,6 +19,9 @@ describe 'Command', ->
   it 'should have a create function', ->
     assert tenderCLI(program, {}).create
 
+  it 'should have a reply function', ->
+    assert tenderCLI(program, {}).reply
+
   it 'should have an ack function', ->
     assert tenderCLI(program, {}).ack
 
