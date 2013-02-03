@@ -14,7 +14,7 @@
     "moment": "~1.7.2",
     "csv": "~0.2.4",
     "async": "~0.1.22",
-    "tender": "0.3.0"
+    "tender": "~0.3.0"
   },
   "devDependencies": {
     "mocha": "*",
