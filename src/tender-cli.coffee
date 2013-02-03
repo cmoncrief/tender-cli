@@ -75,6 +75,69 @@ class TenderCLI
       if err then return console.log(err)
       console.log "Discussion ##{result.id} created in #{@options.category}."
 
+  # Resolves the discussion and prints a basic success message.
+  resolve: (id) ->
+
+    @client.resolveDiscussion {id: id}, (err, result) =>
+      if err then return console.log(err)
+      console.log "Discussion ##{id} resolved."
+
+  # Reopens the discussion and prints a basic success message.
+  reopen: (id) ->
+
+    @client.reopenDiscussion {id: id}, (err, result) =>
+      if err then return console.log(err)
+      console.log "Discussion ##{id} reopened."
+
+  # Acknowledges the discussion and prints a basic success message.
+  ack: (id) ->
+
+    @client.acknowledgeDiscussion {id: id}, (err, result) =>
+      if err then return console.log(err)
+      console.log "Discussion ##{id} acknowledged."
+
+  # Adds the discssion to a queue and prints a basic success message.
+  queue: (id) ->
+
+    @client.queueDiscussion {id: id, queue: @options.queue}, (err, result) =>
+      if err then return console.log(err)
+      console.log "Discussion ##{id} added to the #{@options.queue} queue."
+
+  # Removes the discussion from a queue and prints a basic success message.
+  unqueue: (id) ->
+
+    @client.unqueueDiscussion {id: id, queue: @options.queue}, (err, result) =>
+      if err then return console.log(err)
+      console.log "Discussion ##{id} removed from the #{@options.queue} queue."
+
+  # Changes the discssusion's category and prints a basic success message.
+  categorize: (id) ->
+
+    @client.categorizeDiscussion {id: id, category: @options.category}, (err, result) =>
+      if err then return console.log(err)
+      console.log "Discussion ##{id} moved to the #{@options.category} category."
+
+  # Deletes the discussion and prints a basic success message.
+  remove: (id) ->
+
+    @client.deleteDiscussion {id: id}, (err, result) =>
+      if err then return console.log(err)
+      console.log "Discussion ##{id} deleted."
+
+  # Restores the discussion and prints a basic success message.
+  restore: (id) ->
+
+    @client.restoreDiscussion {id: id}, (err, result) =>
+      if err then return console.log(err)
+      console.log "Discussion ##{id} restored."
+
+  # Toggle the discussion's private status and print a basic success message.
+  toggle: (id) ->
+
+    @client.toggleDiscussion {id: id}, (err, result) =>
+      if err then return console.log(err)
+      console.log "Discussion ##{id} toggled."
+
   # Output results via the chosen or defaulted reporter.
   report: (data, type) ->
 

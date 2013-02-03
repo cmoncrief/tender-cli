@@ -5,10 +5,11 @@ A command line tool for interacting with ENTP's [Tender API](https://help.tender
 ### Features
 
 * List and filter discussions from the command line 
-* Output discussion lists in a variety of formats including JSON and CSV
-* Show discussion details and full comment threads
-* Create new discussions from the command line
-* Authentication data can be stored in a local configuration file for ease of use
+* Output discussion lists in a variety of formats, including JSON and CSV
+* Show discussion details and comments
+* Create new discussions
+* Resolve, acknowledge, queue and more actions are all supported
+* Credentials can be stored in a local configuration file for ease of use
 
 ## Installation
 
@@ -24,8 +25,18 @@ If you don't already have Node.js installed, [download and install it first](htt
 
     Commands:
 
-      list [options]         List discussions with optional filters
-      show [options] [id]    Show single discussion with comments
+      list [options]            List discussions with optional filters
+      show [options] [id]       Show single discussion with comments
+      create [options]          Create a new discussion
+      ack [id]                  Acknowledge a discussion
+      resolve [id]              Close a discussion
+      reopen [id]               Reopen a discussion
+      queue [options] [id]      Assign a discussion to a queue
+      unqueue [options] [id]    Remove a discussion from a queue
+      categorize [options] [id] Change a discussion's category
+      delete [id]               Delete a discussion
+      restore [id]              Restore a deleted discussion
+      toggle [id]               Toggle a discussion from public to private   
 
     Options:
 
@@ -144,6 +155,17 @@ Use the `show` command to get additional details on a specific discussion, inclu
 #### Example
 
     $ tender create -c 'Problems' -t 'Big issue' -b 'The sky is falling!'
+
+## Discussion actions
+
+All discussion actions are supported through individual subcommands. For more information on each action, please see the [discussion API documentation](http://help.tenderapp.com/kb/api/discussions)
+
+#### Examples
+
+    $ tender acknowledge 10672629
+    $ tender resolve 10672631
+    $ tender queue 10672632 -q critical
+    $ tender delete 10672633
 
 ## Discussion list reporters
 

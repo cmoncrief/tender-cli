@@ -24,7 +24,6 @@ module.exports.run = () ->
     .option('-r, --reporter <name>', 'Specify the reporter to use')
     .option('-o, --output <name>', 'specify file name for file reporters ')
     .option('--reporters', 'List available reporters')
-
     .action (args) ->
       tenderCLI(program, args).list()
 
@@ -33,7 +32,6 @@ module.exports.run = () ->
     .description('Show single discussion with comments')
     .option('-r, --reporter <name>', 'Specify the reporter to use')
     .option('--reporters', 'List available reporters')
-
     .action (id, args) ->
       tenderCLI(program, args).show(id)
 
@@ -46,8 +44,64 @@ module.exports.run = () ->
     .option('--private', 'set discussion to private')
     .option('-n, --name <name>', 'Name to create discussion under')
     .option('-e, --email <email>', 'Email to create discussion under')
-
     .action (args) ->
       tenderCLI(program, args).create()
+
+  program
+    .command('ack [id]')
+    .description('Acknowledge a discussion')
+    .action (id, args) ->
+      tenderCLI(program, args).ack(id)
+
+  program
+    .command('resolve [id]')
+    .description('Close a discussion')
+    .action (id, args) ->
+      tenderCLI(program, args).resolve(id)
+
+  program
+    .command('reopen [id]')
+    .description('Reopen a discussion')
+    .action (id, args) ->
+      tenderCLI(program, args).reopen(id)
+
+  program
+    .command('queue [id]')
+    .description('Assign a discussion to a queue')
+    .option('-q, --queue <name>', 'queue to add to [required]')
+    .action (id, args) ->
+      tenderCLI(program, args).queue(id)
+
+  program
+    .command('unqueue [id]')
+    .description('Remove a discussion from a queue')
+    .option('-q, --queue <name>', 'queue to remove from [required]')
+    .action (id, args) ->
+      tenderCLI(program, args).unqueue(id)
+
+  program
+    .command('categorize [id]')
+    .description('Change a discussion\'s category')
+    .option('-c, --category <name>', 'category to change to [required]')
+    .action (id, args) ->
+      tenderCLI(program, args).categorize(id)
+
+  program
+    .command('delete [id]')
+    .description('Delete a discussion')
+    .action (id, args) ->
+      tenderCLI(program, args).remove(id)
+
+  program
+    .command('restore [id]')
+    .description('Restore a deleted discussion')
+    .action (id, args) ->
+      tenderCLI(program, args).restore(id)
+
+  program
+    .command('toggle [id]')
+    .description('Toggle a discussion from public to private')
+    .action (id, args) ->
+      tenderCLI(program, args).restore(id)
 
   program.parse process.argv
