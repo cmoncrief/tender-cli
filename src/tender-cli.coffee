@@ -19,7 +19,7 @@ class TenderCLI
   initClient: ->
 
     config = {}
-    configPath = path.join process.env.HOME, '.tenderrc'
+    configPath = path.join process.env.HOME || process.env.HOMEPATH, '.tenderrc'
     if fs.existsSync configPath
       config = JSON.parse fs.readFileSync(configPath)
 

@@ -7,7 +7,7 @@ tenderCLI = require './tender-cli'
 module.exports.run = () ->
 
   program
-    .version('0.2.0')
+    .version('0.2.1')
     .option('-u, --username <name>', 'set Tender username')
     .option('-p, --pass <password>', 'set Tender password')
     .option('-a, --api <token>', 'set Tender API token')
