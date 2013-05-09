@@ -50,7 +50,7 @@ describe 'Command', ->
     assert tenderCLI(program, {}).toggle
 
   it 'should load configuration data from a file', ->
-    if fs.existsSync path.join process.env.HOME, '.tenderrc'
+    if fs.existsSync path.join(process.env.HOME || process.env.HOMEPATH, '.tenderrc')
       cli = tenderCLI(program, {})
       assert cli.clientOpts.username or cli.clientOpts.token
       assert cli.clientOpts.subdomain
